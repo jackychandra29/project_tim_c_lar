@@ -15,3 +15,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('sekolah', [App\Http\Controllers\SekolahController::class, 'sekolah']);
+Route::get('siswa', [App\Http\Controllers\SiswaController::class, 'siswa']);
