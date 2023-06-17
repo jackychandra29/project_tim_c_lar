@@ -16,3 +16,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('sekolah', [App\Http\Controllers\SekolahController::class, 'sekolah']);
 Route::get('staff', [App\Http\Controllers\StaffController::class, 'staff']);
+Route::get('staff-ptk-sp', [App\Http\Controllers\Staff_PTK_SP_Controller::class, 'staff_ptk_sp']);
