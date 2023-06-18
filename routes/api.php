@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+
 Route::resource('/bangunan', BangunanController::class);
 Route::resource('/rombel', RombelController::class);
 Route::resource('/ruang', RuangController::class);
@@ -25,3 +26,8 @@ Route::resource('/sekolah', SekolahController::class);
 Route::resource('/kecamatan', KecamatanController::class);
 Route::resource('/kabkota', KabKotaController::class);
 Route::resource('/jenis_ruang', JenisRuangController::class);
+
+
+Route::get('sekolah', [App\Http\Controllers\SekolahController::class, 'sekolah']);
+Route::get('staff', [App\Http\Controllers\StaffController::class, 'staff']);
+
