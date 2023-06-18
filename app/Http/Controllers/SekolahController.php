@@ -7,14 +7,15 @@ use App\Models\satuan_pendidikan;
 
 class SekolahController extends Controller
 {
-    public function sekolah(){
+    public function index(){
+        //get data from table sekolahs
         $sekolah = satuan_pendidikan::latest()->get();
-        return response()->json(
-            [
-                'sekolah' => $sekolah,
-                'message' => 'satuan_pendidikan',
-                'code' => 200
-            ]
-        );
+        //make response JSON
+        return response()->json([
+            'success' => true,
+            'message' => 'List Data sekolah',
+            'data' => $sekolah
+        ], 200);
     }
+    
 }
