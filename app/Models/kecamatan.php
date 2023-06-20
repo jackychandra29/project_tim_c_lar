@@ -10,7 +10,10 @@ class kecamatan extends Model
     use HasFactory;
 
     protected $table = "kecamatan";
-    protected $fillable = ["Nama_kecamatan", "Kode_kabKota"];
+
     protected $primaryKey = "Kode_kecamatan";
+    protected $keyType = 'string';
+
+    protected $fillable = ["Nama_kecamatan", "Kode_kabKota"];
     public $timestamps = true;
 }

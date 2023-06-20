@@ -10,7 +10,11 @@ class ptk extends Model
     use HasFactory;
 
     protected $table = "ptk";
-    protected $fillable = ["Jenis_PTK"];
+
     protected $primaryKey = "Kode_PTK";
+    protected $keyType = 'string';
+
+    protected $fillable = ["Jenis_PTK"];
+    
     public $timestamps = true;
 }

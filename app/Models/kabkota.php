@@ -10,7 +10,10 @@ class kabkota extends Model
     use HasFactory;
 
     protected $table = "kabkota";
-    protected $fillable = ["Nama_kabKota"];
+    
     protected $primaryKey = "Kode_kabKota";
+    protected $keyType = 'string';
+
+    protected $fillable = ["Nama_kabKota"];
     public $timestamps = true;
 }

@@ -17,5 +17,18 @@ class SekolahController extends Controller
             'data' => $sekolah
         ], 200);
     }
+
+    public function show($id)
+    {
+        $sekolah = satuan_pendidikan::findOrFail($id);
+        return response()->json(
+            [
+                'success' => true,
+                'message' => 'Detail data sekolah',
+                'data' => $sekolah
+            ],
+            200
+        );
+    }
     
 }

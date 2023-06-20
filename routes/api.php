@@ -26,8 +26,4 @@ Route::resource('/sekolah', SekolahController::class);
 Route::resource('/kecamatan', KecamatanController::class);
 Route::resource('/kabkota', KabKotaController::class);
 Route::resource('/jenis_ruang', JenisRuangController::class);
-
-
-Route::get('sekolah', [App\Http\Controllers\SekolahController::class, 'sekolah']);
-Route::get('staff', [App\Http\Controllers\StaffController::class, 'staff']);
-
+Route::resource('/staff', StaffController::class);

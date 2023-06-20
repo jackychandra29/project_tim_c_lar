@@ -10,7 +10,10 @@ class jenis_ruang extends Model
     use HasFactory;
 
     protected $table = "jenis_ruang";
-    protected $fillable = ["Jenis_ruang"];
+
     protected $primaryKey = "Kode_jenis_ruang";
+    protected $keyType = 'string';
+
+    protected $fillable = ["Jenis_ruang"];
     public $timestamps = true;
 }

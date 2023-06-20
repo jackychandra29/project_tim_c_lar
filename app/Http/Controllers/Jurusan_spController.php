@@ -17,5 +17,4 @@ class Jurusan_spController extends Controller
             'data' => $jurusan_sp
         ], 200);
     }
-    
 }

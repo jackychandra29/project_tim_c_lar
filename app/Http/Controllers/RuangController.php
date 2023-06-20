@@ -17,4 +17,17 @@ class RuangController extends Controller
             'data' => $ruang
         ], 200);
     }
+
+    public function show($id)
+    {
+        $ruang = ruang::findOrFail($id);
+        return response()->json(
+            [
+                'success' => true,
+                'message' => 'Detail data ruang',
+                'data' => $ruang
+            ],
+            200
+        );
+    }
 }
