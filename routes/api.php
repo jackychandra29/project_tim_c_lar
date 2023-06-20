@@ -27,3 +27,4 @@ Route::resource('/kecamatan', KecamatanController::class);
 Route::resource('/kabkota', KabKotaController::class);
 Route::resource('/jenis_ruang', JenisRuangController::class);
 Route::resource('/staff', StaffController::class);
+Route::resource('/jurusan', JurusanController::class);
