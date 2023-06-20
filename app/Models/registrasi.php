@@ -10,7 +10,7 @@ class registrasi extends Model
     use HasFactory;
 
     protected $table = "registrasi";
+
     protected $fillable = ["ID_siswa", "Kode_rombel"];
-    protected $primaryKey = "";
     public $timestamps = true;
 }

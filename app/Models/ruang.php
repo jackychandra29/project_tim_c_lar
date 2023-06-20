@@ -10,7 +10,10 @@ class ruang extends Model
     use HasFactory;
 
     protected $table = "ruang";
-    protected $fillable = ["Nama_ruang", "Panjang", "Lebar", "Lantai", "Kode_bangunan", "Kode_jenis_ruang"];
+
     protected $primaryKey = "Kode_ruang";
+    protected $keyType = 'string';
+    
+    protected $fillable = ["Nama_ruang", "Panjang", "Lebar", "Lantai", "Kode_bangunan", "Kode_jenis_ruang"];
     public $timestamps = false;
 }

@@ -10,7 +10,10 @@ class satuan_pendidikan extends Model
     use HasFactory;
 
     protected $table = "satuan_pendidikan";
-    protected $fillable = ["Nama_SP", "Bentuk_pendidikan", "Status_sekolah", "Kode_kecamatan", "Kode_kabKota"];
+
     protected $primaryKey = "NPSN";
+    protected $keyType = 'string';
+    
+    protected $fillable = ["Nama_SP", "Bentuk_pendidikan", "Status_sekolah", "Kode_kecamatan", "Kode_kabKota"];
     public $timestamps = false;
 }

@@ -17,4 +17,17 @@ class SiswaController extends Controller
             'data' => $siswa
         ], 200);
     }
+
+    public function show($id)
+    {
+        $siswa = siswa::findOrFail($id);
+        return response()->json(
+            [
+                'success' => true,
+                'message' => 'Detail data siswa',
+                'data' => $siswa
+            ],
+            200
+        );
+    }
 }

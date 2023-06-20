@@ -10,7 +10,9 @@ class siswa extends Model
     use HasFactory;
 
     protected $table = "siswa";
-    protected $fillable = ["NISN", "NIK", "Nama_lengkap", "Jenis_kelamin", "Tanggal_lahir", "Nama_ibuKandung", "NPSN"];
+
     protected $primaryKey = "id";
+
+    protected $fillable = ["NISN", "NIK", "Nama_lengkap", "Jenis_kelamin", "Tanggal_lahir", "Nama_ibuKandung", "NPSN"];
     public $timestamps = false;
 }

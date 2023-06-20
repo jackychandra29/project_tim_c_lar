@@ -9,7 +9,13 @@ class rombel extends Model
 {
     use HasFactory;
 
+    protected $table = "rombel";
+
+    protected $primaryKey = "Kode_rombel";
+    protected $keyType = 'string';
+
     protected $fillable = [
-        'Kode_rombel', 'Nama_rombel', 'Tingkat', 'Semester', 'Tahun_pelajaran', 'Kurikulum'
+        'Nama_rombel', 'Tingkat', 'Semester', 'Tahun_pelajaran', 'Kurikulum', 'Kode_ruang', 
+        'ID_staff', 'Jurusan_SP_ID'
     ];
 }
