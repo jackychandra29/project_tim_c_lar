@@ -86,7 +86,7 @@ class RegistrasiController extends Controller
         if ($registrasi) {
             $registrasi->update([
                 'ID_siswa' => $request->ID_siswa,
-            'Kode_rombel' => $request->Kode_rombel
+                'Kode_rombel' => $request->Kode_rombel
             ]);
             return response()->json([
                 'success' => true,
@@ -101,22 +101,22 @@ class RegistrasiController extends Controller
         ], 404);
     }
 
-    public function destroy($id)
-    {
-        $registrasi = registrasi::findOrFail($id);
+    // public function destroy($id)
+    // {
+    //     $registrasi = registrasi::findOrFail($id);
 
-        if ($registrasi) {
-            $registrasi->delete();
+    //     if ($registrasi) {
+    //         $registrasi->delete();
 
-            return response()->json([
-                'success' => true,
-                'message' => 'Data registrasi dihapus'
-            ], 200);
-        }
+    //         return response()->json([
+    //             'success' => true,
+    //             'message' => 'Data registrasi dihapus'
+    //         ], 200);
+    //     }
 
-        return response()->json([
-            'success' => false,
-            'message' => 'Data registrasi tidak ditemukan'
-        ], 404);
-    }
+    //     return response()->json([
+    //         'success' => false,
+    //         'message' => 'Data registrasi tidak ditemukan'
+    //     ], 404);
+    // }
 }

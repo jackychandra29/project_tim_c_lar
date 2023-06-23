@@ -15,7 +15,7 @@ class rombel extends Model
     protected $keyType = 'string';
 
     protected $fillable = [
-        'Nama_rombel', 'Tingkat', 'Semester', 'Tahun_pelajaran', 'Kurikulum', 'Kode_ruang', 
+        'Kode_rombel','Nama_rombel', 'Tingkat', 'Semester', 'Tahun_pelajaran', 'Kurikulum', 'Kode_ruang', 
         'ID_staff', 'Jurusan_SP_ID'
     ];
 }

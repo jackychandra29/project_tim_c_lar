@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use App\Models\rombel;
 
 class RombelController extends Controller
@@ -31,89 +32,117 @@ class RombelController extends Controller
         );
     }
 
-    // public function store(Request $request)
-    // {
-    //     $validator = Validator::make($request->all(), [
-    //         'ID_siswa' => 'required',
-    //         'Kode_rombel' => 'required'
-    //     ]);
+    public function store(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'Kode_rombel' => 'required',
+            'Nama_rombel' => 'required',
+            'Tingkat' => 'required',
+            'Semester' => 'required',
+            'Tahun_pelajaran' => 'required',
+            'Kurikulum' => 'required',
+            'Kode_ruang' => 'required',
+            'ID_staff' => 'required',
+            'Jurusan_SP_ID' => 'required',
+        ]);
 
-    //     if ($validator->fails()) {
-    //         return response()->json($validator->errors(), 400);
-    //     }
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
 
-    //     $registrasi = registrasi::create([
-    //         'ID_siswa' => $request->ID_siswa,
-    //         'Kode_rombel' => $request->Kode_rombel
-    //     ]);
+        $rombel = rombel::create([
+            'Kode_rombel' => $request->Kode_rombel,
+            'Nama_rombel' => $request->Nama_rombel,
+            'Tingkat' => $request->Tingkat,
+            'Semester' => $request->Semester,
+            'Tahun_pelajaran' => $request->Tahun_pelajaran,
+            'Kurikulum' => $request->Kurikulum,
+            'Kode_ruang' => $request->Kode_ruang,
+            'ID_staff' => $request->ID_staff,
+            'Jurusan_SP_ID' => $request->Jurusan_SP_ID
+        ]);
 
-    //     //success save
-    //     if ($registrasi) {
-    //         return response()->json(
-    //             [
-    //                 'success' => true,
-    //                 'message' => 'Data registrasi ditambahkan',
-    //                 'data' => $registrasi
-    //             ],
-    //             201
-    //         );
+        //success save
+        if ($rombel) {
+            return response()->json(
+                [
+                    'success' => true,
+                    'message' => 'Data registrasi ditambahkan',
+                    'data' => $rombel
+                ],
+                201
+            );
 
-    //         //failed save
-    //         return response()->json([
-    //             'success' => false,
-    //             'message' => 'Data registrasi gagal ditambahkan',
-    //             'data' => $registrasi
-    //         ], 409);
-    //     }
-    // }
+            //failed save
+            return response()->json([
+                'success' => false,
+                'message' => 'Data registrasi gagal ditambahkan',
+                'data' => $rombel
+            ], 409);
+        }
+    }
 
-    // public function update(Request $request, registrasi $registrasi)
-    // {
-    //     $validator = Validator::make($request->all(), [
-    //         'ID_siswa' => 'required',
-    //         'Kode_rombel' => 'required'
-    //     ]);
+    public function update(Request $request, rombel $rombel)
+    {
+        $validator = Validator::make($request->all(), [
+            'Kode_rombel' => 'required',
+            'Nama_rombel' => 'required',
+            'Tingkat' => 'required',
+            'Semester' => 'required',
+            'Tahun_pelajaran' => 'required',
+            'Kurikulum' => 'required',
+            'Kode_ruang' => 'required',
+            'ID_staff' => 'required',
+            'Jurusan_SP_ID' => 'required',
+        ]);
 
-    //     if ($validator->fails()) {
-    //         return response()->json($validator->errors(), 400);
-    //     }
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
 
-    //     $registrasi = registrasi::findOrFail($registrasi->id);
+        $rombel = rombel::findOrFail($rombel->Kode_rombel);
 
-    //     if ($registrasi) {
-    //         $registrasi->update([
-    //             'ID_siswa' => $request->ID_siswa,
-    //         'Kode_rombel' => $request->Kode_rombel
-    //         ]);
-    //         return response()->json([
-    //             'success' => true,
-    //             'message' => 'Data registrasi diupdate',
-    //             'data' => $registrasi
-    //         ], 200);
-    //     }
+        if ($rombel) {
+            $rombel->update([
+                'Kode_rombel' => $request->Kode_rombel,
+            'Nama_rombel' => $request->Nama_rombel,
+            'Tingkat' => $request->Tingkat,
+            'Semester' => $request->Semester,
+            'Tahun_pelajaran' => $request->Tahun_pelajaran,
+            'Kurikulum' => $request->Kurikulum,
+            'Kode_ruang' => $request->Kode_ruang,
+            'ID_staff' => $request->ID_staff,
+            'Jurusan_SP_ID' => $request->Jurusan_SP_ID
+            ]);
+            return response()->json([
+                'success' => true,
+                'message' => 'Data rombel diupdate',
+                'data' => $rombel
+            ], 200);
+        }
 
-    //     return response()->json([
-    //         'success' => false,
-    //         'message' => 'Data registrasi tidak ditemukan'
-    //     ], 404);
-    // }
+        return response()->json([
+            'success' => false,
+            'message' => 'Data rombel tidak ditemukan'
+        ], 404);
+    }
 
-    // public function destroy($id)
-    // {
-    //     $registrasi = registrasi::findOrFail($id);
+    public function destroy($id)
+    {
+        $rombel = rombel::findOrFail($id);
 
-    //     if ($registrasi) {
-    //         $registrasi->delete();
+        if ($rombel) {
+            $rombel->delete();
 
-    //         return response()->json([
-    //             'success' => true,
-    //             'message' => 'Data registrasi dihapus'
-    //         ], 200);
-    //     }
+            return response()->json([
+                'success' => true,
+                'message' => 'Data rombel dihapus'
+            ], 200);
+        }
 
-    //     return response()->json([
-    //         'success' => false,
-    //         'message' => 'Data registrasi tidak ditemukan'
-    //     ], 404);
-    // }
+        return response()->json([
+            'success' => false,
+            'message' => 'Data rombel tidak ditemukan'
+        ], 404);
+    }
 }
