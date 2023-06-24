@@ -84,7 +84,7 @@ class KecamatanController extends Controller
             return response()->json($validator->errors(), 400);
         }
 
-        $kecamatan = kecamatan::findOrFail($kecamatan->id);
+        $kecamatan = kecamatan::findOrFail($kecamatan->Kode_kecamatan);
 
         if ($kecamatan) {
             $kecamatan->update([

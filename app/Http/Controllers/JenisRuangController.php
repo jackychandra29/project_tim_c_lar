@@ -23,12 +23,12 @@ class JenisRuangController extends Controller
 
     public function show($id)
     {
-        $datajr = jenis_ruang::findOrFail($id);
+        $jenis_ruang = jenis_ruang::findOrFail($id);
         return response()->json(
             [
                 'success' => true,
                 'message' => 'Detail data jenis ruang',
-                'data' => $datajr
+                'data' => $jenis_ruang
             ],
             200
         );
@@ -45,32 +45,33 @@ class JenisRuangController extends Controller
             return response()->json($validator->errors(), 400);
         }
 
-        $datajr = jenis_ruang::create([
+        $jenis_ruang = jenis_ruang::create([
             'Kode_jenis_ruang' => $request->Kode_jenis_ruang,
             'Jenis_ruang' => $request->Jenis_ruang
         ]);
 
         //success save
-        if ($datajr) {
+        if ($jenis_ruang) {
             return response()->json(
                 [
                     'success' => true,
                     'message' => 'Data jenis ruang ditambahkan',
-                    'data' => $datajr
+                    'data' => $jenis_ruang
                 ],
                 201
             );
 
             //failed save
-            return response()->json([
-                'success' => false,
-                'message' => 'Data jenis ruang gagal ditambahkan',
-                'data' => $datajr
-            ], 409);
+
         }
+        return response()->json([
+            'success' => false,
+            'message' => 'Data jenis ruang gagal ditambahkan',
+            'data' => $jenis_ruang
+        ], 409);
     }
 
-    public function update(Request $request, jenis_ruang $datajr)
+    public function update(Request $request, jenis_ruang $jenis_ruang)
     {
         $validator = Validator::make($request->all(), [
             'Kode_jenis_ruang' => 'required',
@@ -81,17 +82,17 @@ class JenisRuangController extends Controller
             return response()->json($validator->errors(), 400);
         }
 
-        $datajr = jenis_ruang::findOrFail($datajr->id);
+        $jenis_ruang = jenis_ruang::findOrFail($jenis_ruang->Kode_jenis_ruang);
 
-        if ($datajr) {
-            $datajr->update([
+        if ($jenis_ruang) {
+            $jenis_ruang->update([
                 'Kode_jenis_ruang' => $request->Kode_jenis_ruang,
                 'Jenis_ruang' => $request->Jenis_ruang
             ]);
             return response()->json([
                 'success' => true,
                 'message' => 'Data jenis ruang diupdate',
-                'data' => $datajr
+                'data' => $jenis_ruang
             ], 200);
         }
 
@@ -103,10 +104,10 @@ class JenisRuangController extends Controller
 
     public function destroy($id)
     {
-        $datajr = jenis_ruang::findOrFail($id);
+        $jenis_ruang = jenis_ruang::findOrFail($id);
 
-        if ($datajr) {
-            $datajr->delete();
+        if ($jenis_ruang) {
+            $jenis_ruang->delete();
 
             return response()->json([
                 'success' => true,

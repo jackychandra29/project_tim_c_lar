@@ -23,7 +23,7 @@ class RegistrasiController extends Controller
 
     public function show($id)
     {
-        $registrasi = registrasi::findOrFail($id);
+        $registrasi = registrasi::where('ID_siswa',$id)->first();
         return response()->json(
             [
                 'success' => true,
@@ -81,7 +81,7 @@ class RegistrasiController extends Controller
             return response()->json($validator->errors(), 400);
         }
 
-        $registrasi = registrasi::findOrFail($registrasi->id);
+        $registrasi = registrasi::findOrFail($registrasi->ID_siswa);
 
         if ($registrasi) {
             $registrasi->update([
