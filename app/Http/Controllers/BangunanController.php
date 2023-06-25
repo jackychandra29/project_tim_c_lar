@@ -40,6 +40,7 @@ class BangunanController extends Controller
         $validator = Validator::make($request->all(), [
             'Kode_bangunan' => 'required',
             'Nama_bangunan' => 'required',
+            'NPSN' => 'required',
         ]);
         //response error validation
         if ($validator->fails()) {
@@ -47,8 +48,9 @@ class BangunanController extends Controller
         }
         //save to database
         $bangunan = bangunan::create([
-            'title' => $request->title,
-            'content' => $request->content
+            'Kode_bangunan' => $request->Kode_bangunan,
+            'Nama_bangunan' => $request->Nama_bangunan,
+            'NPSN' => $request->NPSN,
         ]);
         //success save to database
         if ($bangunan) {
@@ -97,18 +99,20 @@ class BangunanController extends Controller
         $validator = Validator::make($request->all(), [
             'Kode_bangunan' => 'required',
             'Nama_bangunan' => 'required',
+            'NPSN' => 'required',
         ]);
         //response error validation
         if ($validator->fails()) {
             return response()->json($validator->errors(), 400);
         }
         //find bangunan by ID
-        $bangunan = bangunan::findOrFail($bangunan->id);
+        $bangunan = bangunan::findOrFail($bangunan->Kode_bangunan);
         if ($bangunan) {
             //update bangunan
             $bangunan->update([
                 'Kode_bangunan' => $request->Kode_bangunan,
-                'Nama_bangunan' => $request->Nama_bangunan
+                'Nama_bangunan' => $request->Nama_bangunan,
+                'NPSN' => $request->NPSN,
             ]);
             return response()->json([
                 'success' => true,

@@ -81,7 +81,7 @@ class KabKotaController extends Controller
             return response()->json($validator->errors(), 400);
         }
 
-        $kabkota = kabkota::findOrFail($kabkota->id);
+        $kabkota = kabkota::findOrFail($kabkota->Kode_kabKota);
 
         if ($kabkota) {
             $kabkota->update([

@@ -81,7 +81,7 @@ class PTKController extends Controller
             return response()->json($validator->errors(), 400);
         }
 
-        $ptk = ptk::findOrFail($ptk->id);
+        $ptk = ptk::findOrFail($ptk->Kode_PTK);
 
         if ($ptk) {
             $ptk->update([

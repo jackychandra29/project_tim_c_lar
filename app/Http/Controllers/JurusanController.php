@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\jurusan;
+use Illuminate\Support\Facades\Validator;
 
 class JurusanController extends Controller
 {
@@ -29,5 +30,39 @@ class JurusanController extends Controller
             ],
             200
         );
+    }
+
+    public function update(Request $request, jurusan $jurusan)
+    {
+        //set validation
+        $validator = Validator::make($request->all(), [
+            'Kode_jurusan' => 'required',
+            'Nama_jurusan' => 'required',
+            
+        ]);
+        //response error validation
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+        //find jurusan by ID
+        $jurusan = jurusan::findOrFail($jurusan->Kode_jurusan);
+        if ($jurusan) {
+            //update jurusan
+            $jurusan->update([
+                'Kode_jurusan' => $request->Kode_jurusan,
+                'Nama_jurusan' => $request->Nama_jurusan,
+                
+            ]);
+            return response()->json([
+                'success' => true,
+                'message' => 'jurusan Updated',
+                'data' => $jurusan
+            ], 200);
+        }
+        //data jurusan not found
+        return response()->json([
+            'success' => false,
+            'message' => 'jurusan Not Found',
+        ], 404);
     }
 }
