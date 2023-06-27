@@ -13,6 +13,6 @@ class bangunan extends Model
     protected $primaryKey = "Kode_bangunan";
     protected $keyType = 'string';
 
-    protected $fillable = ["Nama_bangunan", "NPSN"];
+    protected $fillable = ["Kode_bangunan","Nama_bangunan", "NPSN"];
     public $timestamps = true;
 }
