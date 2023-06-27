@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::resource('/bangunan', BangunanController::class);
 Route::post('/bangunan/{bangunan}', [BangunanController::class,"update"]);
 Route::resource('/rombel', RombelController::class);
-Route::post('/rombel/{rombel}', [RombelController::class,"update"]);
+// Route::put('/rombel/{rombel}', [RombelController::class,"update"]);
 Route::resource('/ruang', RuangController::class);
 Route::resource('/siswa', SiswaController::class);
 Route::resource('/jurusan_sp', Jurusan_spController::class);
@@ -37,3 +37,6 @@ Route::post('/jenis_ruang/{jenis_ruang}', [JenisRuangController::class,"update"]
 Route::resource('/staff', StaffController::class);
 Route::resource('/jurusan', JurusanController::class);
 Route::post('/jurusan/{jurusan}', [JurusanController::class,"update"]);
+
+Route::post('/register', [RegisterController::class,'store']);
+Route::post('/login', [LoginController::class,'check']);
