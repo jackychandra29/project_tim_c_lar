@@ -8,14 +8,14 @@ use App\Models\staff;
 class StaffController extends Controller
 {
     public function index(){
+        //get data from table staffs
         $staff = staff::latest()->get();
-        return response()->json(
-            [
-                'staff' => $staff,
-                'message' => 'staff',
-                'code' => 200
-            ]
-        );
+        //make response JSON
+        return response()->json([
+            'success' => true,
+            'message' => 'List Data staff',
+            'data' => $staff
+        ], 200);
     }
 
     public function show($id)

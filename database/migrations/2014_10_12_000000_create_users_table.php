@@ -20,6 +20,15 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+
+        Schema::table('users', function (Blueprint $table) {
+            $table->integer('role');
+            $table->string('NPSN');
+        });
+
+        Schema::table('users', function (Blueprint $table) {
+            $table->integer('status');
+        });
     }
 
     /**
