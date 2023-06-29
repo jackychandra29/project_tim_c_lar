@@ -9,13 +9,12 @@ class StaffController extends Controller
 {
     public function index(){
         $staff = staff::latest()->get();
-        return response()->json(
-            [
-                'staff' => $staff,
-                'message' => 'staff',
-                'code' => 200
-            ]
-        );
+
+        return response()->json([
+            'success' => true,
+            'message' => 'List Data bangunan',
+            'data' => $staff
+        ], 200);
     }
 
     public function show($id)
