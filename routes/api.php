@@ -43,4 +43,7 @@ Route::resource('/jurusan', JurusanController::class);
 Route::post('/jurusan/{jurusan}', [JurusanController::class,"update"]);
 
 Route::post('/register', [RegisterController::class,'store']);
+Route::get('/users', [RegisterController::class, 'index']);
+Route::post('/users/{users}', [RegisterController::class,"update"]);
+// Route::resource('/users', RegisterController::class);
 Route::post('/login', [LoginController::class,'check']);
