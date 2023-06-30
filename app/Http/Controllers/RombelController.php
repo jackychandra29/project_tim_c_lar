@@ -84,21 +84,21 @@ class RombelController extends Controller
 
     public function update(Request $request, rombel $rombel)
     {
-        $validator = Validator::make($request->all(), [
-            'Kode_rombel' => 'required',
-            'Nama_rombel' => 'required',
-            'Tingkat' => 'required',
-            'Semester' => 'required',
-            'Tahun_pelajaran' => 'required',
-            'Kurikulum' => 'required',
-            'Kode_ruang' => 'required',
-            'ID_staff' => 'required',
-            'Jurusan_SP_ID' => 'required',
-        ]);
+        // $validator = Validator::make($request->all(), [
+        //     'Kode_rombel' => 'required',
+        //     'Nama_rombel' => 'required',
+        //     'Tingkat' => 'required',
+        //     'Semester' => 'required',
+        //     'Tahun_pelajaran' => 'required',
+        //     'Kurikulum' => 'required',
+        //     'Kode_ruang' => 'required',
+        //     'ID_staff' => 'required',
+        //     'Jurusan_SP_ID' => 'required',
+        // ]);
 
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), 400);
-        }
+        // if ($validator->fails()) {
+        //     return response()->json($validator->errors(), 400);
+        // }
 
         $rombel = rombel::findOrFail($rombel->Kode_rombel);
 

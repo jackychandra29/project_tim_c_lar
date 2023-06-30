@@ -37,4 +37,27 @@ class RegisterController extends Controller
             'message'=> "Registration Success"
         ]);
     }
+
+    public function update(Request $request, $id)
+    {
+        
+        //find user by ID
+        $user = User::findOrFail($id);
+        if ($user) {
+            //update user
+            $user->update([
+                'status'=> $request->status,
+            ]);
+            return response()->json([
+                'success' => true,
+                'message' => 'status Updated',
+                'data' => $user
+            ], 200);
+        }
+        //data user not found
+        return response()->json([
+            'success' => false,
+            'message' => 'user Not Found',
+        ], 404);
+    }
 }
