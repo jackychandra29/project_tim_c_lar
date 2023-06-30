@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Validator;
 
 class Jurusan_spController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         //get data from table jurusan_sp$jurusan_sps
         $jurusan_sp = jurusan_sp::latest()->get();
         //make response JSON
@@ -32,6 +33,43 @@ class Jurusan_spController extends Controller
         );
     }
 
+    public function store(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'ID' => 'required',
+            'Kode_jurusan' => 'required',
+            'NPSN' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+
+        $jurusan_sp = jurusan_sp::create([
+            'ID' => $request->ID,
+            'NPSN' => $request->NPSN,
+            'Kode_jurusan' => $request->Kode_jurusan,
+        ]);
+
+        //success save
+        if ($jurusan_sp) {
+            return response()->json(
+                [
+                    'success' => true,
+                    'message' => 'Data jurusan_sp ditambahkan',
+                    'data' => $jurusan_sp
+                ],
+                201
+            );
+
+            //failed save
+            return response()->json([
+                'success' => false,
+                'message' => 'Data jurusan_sp gagal ditambahkan',
+                'data' => $jurusan_sp
+            ], 409);
+        }
+    }
     public function update(Request $request, jurusan_sp $jurusan_sp)
     {
         //set validation
