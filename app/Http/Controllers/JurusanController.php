@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Validator;
 
 class JurusanController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         //get data from table jurusan_sp$jurusan_sps
         $jrs = jurusan::latest()->get();
         //make response JSON
@@ -32,13 +33,48 @@ class JurusanController extends Controller
         );
     }
 
+    public function store(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'Kode_jurusan' => 'required',
+            'Nama_jurusan' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+
+        $jurusan = jurusan::create([
+            'Kode_jurusan' => $request->Kode_jurusan,
+            'Nama_jurusan' => $request->Nama_jurusan,
+        ]);
+
+        //success save
+        if ($jurusan) {
+            return response()->json(
+                [
+                    'success' => true,
+                    'message' => 'Data jurusan ditambahkan',
+                    'data' => $jurusan
+                ],
+                201
+            );
+
+            //failed save
+            return response()->json([
+                'success' => false,
+                'message' => 'Data jurusan gagal ditambahkan',
+                'data' => $jurusan
+            ], 409);
+        }
+    }
     public function update(Request $request, jurusan $jurusan)
     {
         //set validation
         $validator = Validator::make($request->all(), [
             'Kode_jurusan' => 'required',
             'Nama_jurusan' => 'required',
-            
+
         ]);
         //response error validation
         if ($validator->fails()) {
@@ -51,7 +87,7 @@ class JurusanController extends Controller
             $jurusan->update([
                 'Kode_jurusan' => $request->Kode_jurusan,
                 'Nama_jurusan' => $request->Nama_jurusan,
-                
+
             ]);
             return response()->json([
                 'success' => true,
