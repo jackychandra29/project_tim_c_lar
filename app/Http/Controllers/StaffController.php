@@ -8,13 +8,14 @@ use Illuminate\Support\Facades\Validator;
 
 class StaffController extends Controller
 {
-    public function index(){
-
+    public function index()
+    {
+        //get data from table staffs
         $staff = staff::latest()->get();
-
+        //make response JSON
         return response()->json([
             'success' => true,
-            'message' => 'List Data bangunan',
+            'message' => 'List Data staff',
             'data' => $staff
         ], 200);
     }

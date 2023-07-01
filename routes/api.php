@@ -29,7 +29,7 @@ Route::post('/registrasi/{registrasi}', [RegistrasiController::class,"update"]);
 Route::resource('/ptk', PTKController::class);
 Route::post('/ptk/{ptk}', [PTKController::class,"update"]);
 Route::resource('/staff_ptk_sp', Staff_PTK_SP_Controller::class);
-Route::post('/staff_ptk_sp/{staff_ptk_sp}', [Staff_PTK_SP_Controller::class,"update"]);
+Route::post('/staff_ptk_sp/{staff_ptk_sp}', [Staff_PTK_SP::class,"update"]);
 Route::resource('/sekolah', SekolahController::class);
 Route::post('/sekolah/{sekolah}', [SekolahController::class,"update"]);
 Route::resource('/kecamatan', KecamatanController::class);
